@@ -75,7 +75,7 @@ export default function NavTop() {
           <Button
             variant="ghost"
             size="icon"
-            className="group relative rounded-full h-7 w-7 bg-white/10 text-white hover:bg-white/15"
+            className="group relative rounded-full h-7 w-7 text-white data-[state=active]:bg-white/0"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
@@ -147,7 +147,7 @@ export default function NavTop() {
             <Button
               variant="ghost"
               size="icon"
-              className="group relative rounded-full h-8 w-8 bg-white/10 text-white hover:bg-white/15"
+              className="group relative rounded-full h-8 w-8 text-white data-[state=active]:bg-white/0 hover:bg-white/0 "
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               aria-label={`Switch to ${
                 theme === "dark" ? "light" : "dark"
