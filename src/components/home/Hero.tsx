@@ -9,6 +9,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import PageLayout from "@/tools/PageLayout";
 
 const heroSlides = [
   {
@@ -85,7 +86,7 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="relative mx-auto custom-width px-4 py-12 sm:px-6 lg:px-8">
+      <PageLayout className="relative">
         <div className="grid items-stretch gap-6 lg:grid-cols-[220px_minmax(0,1fr)_220px]">
           <aside className="hidden lg:block h-full">
             <SideAdLink {...leftAd} />
@@ -133,7 +134,7 @@ const Hero = () => {
           <SideAdLink {...leftAd} />
           <SideAdLink {...rightAd} />
         </div>
-      </div>
+      </PageLayout>
     </section>
   );
 };

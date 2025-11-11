@@ -49,7 +49,7 @@ export default function NavTop() {
   return (
     <section className="border-b border-white/15 text-white">
       {/* Mobile Top Row */}
-      <div className="flex md:hidden h-10 items-center justify-end px-4 text-sm text-white">
+      <div className="flex md:hidden h-10 items-center justify-end px-5 text-sm text-white">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -94,7 +94,7 @@ export default function NavTop() {
           </Button>
         )}
       </div>
-      <div className="custom-width mx-auto hidden md:flex h-9 items-center justify-between px-6 text-sm text-white">
+      <div className="custom-width mx-auto hidden md:flex h-9 items-center justify-between px-5 text-sm text-white">
         <div className="relative h-full min-w-0 flex-1 overflow-hidden">
           <span
             className={`absolute inset-0 flex items-center ${transitionClass} ${

@@ -22,7 +22,7 @@ import {
 const NavMiddle = () => {
   return (
     <div className="text-white">
-      <div className="custom-width mx-auto flex items-center justify-between py-4 px-6">
+      <div className="custom-width mx-auto flex items-center justify-between py-4 px-5">
         {/* Logo */}
         <Link href="/">
           <Image
