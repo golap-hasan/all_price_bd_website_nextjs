@@ -12,6 +12,7 @@ import { Moon, Sun, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import { promoMessages } from "./shared";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export default function NavTop() {
   const [promoIndex, setPromoIndex] = useState(0);
@@ -65,7 +66,7 @@ export default function NavTop() {
             align="end"
             className="border-border bg-background text-foreground"
           >
-            <DropdownMenuItem>Check Out</DropdownMenuItem>
+            <DropdownMenuItem><Link href="/profile">Profile</Link></DropdownMenuItem>
             <DropdownMenuItem>Sign In</DropdownMenuItem>
             <DropdownMenuItem>Register</DropdownMenuItem>
           </DropdownMenuContent>
@@ -136,7 +137,7 @@ export default function NavTop() {
               align="end"
               className="border-border bg-background text-foreground"
             >
-              <DropdownMenuItem>Check Out</DropdownMenuItem>
+              <DropdownMenuItem><Link href="/profile">Profile</Link></DropdownMenuItem>
               <DropdownMenuItem>Sign In</DropdownMenuItem>
               <DropdownMenuItem>Register</DropdownMenuItem>
             </DropdownMenuContent>
