@@ -23,19 +23,19 @@ export default function NavBottom() {
 
   const categories = [
     {
-      title: "Smart / Android Merchants",
+      title: "Mobiles",
       items: ["Smartphones", "Android Tablets", "Wearables"],
     },
     {
-      title: "Mobile, Electronics & Gadgets",
+      title: "Electronics and Gadgets",
       items: ["Laptops", "Headphones", "Smart Home"],
     },
     {
-      title: "Vehicles & Accessories",
+      title: "Vehicles",
       items: ["Cars", "Motorcycles", "Parts & Accessories"],
     },
     {
-      title: "Home & Living",
+      title: "Home Living",
       items: ["Furniture", "Kitchen & Dining", "Decor"],
     },
     {
@@ -72,14 +72,14 @@ export default function NavBottom() {
                       key={category.title}
                       className="rounded-lg border border-white/20 bg-white/10 p-3 transition hover:border-white/30"
                     >
-                      <Link href={`/categories/${toSlug(category.title)}`} className="text-sm font-semibold">
+                      <Link href={`/ads?category=${toSlug(category.title)}`} className="text-sm font-semibold">
                         {category.title}
                       </Link>
                       <div className="mt-2 flex flex-wrap gap-2 text-xs text-white/80">
                         {category.items.map((item) => (
                           <Link
                             key={item}
-                            href={`/categories/${toSlug(item)}`}
+                            href={`/ads?category=${toSlug(item)}`}
                             className="rounded-sm border border-white/25 bg-white/5 px-2 py-1 transition hover:border-white/40 hover:bg-white/10"
                           >
                             {item}
@@ -145,14 +145,14 @@ export default function NavBottom() {
                 <nav className="space-y-4 text-sm">
                   {categories.map((category) => (
                     <div key={category.title} className="space-y-2">
-                      <Link href={`/categories/${toSlug(category.title)}`} className="block font-semibold">
+                      <Link href={`/ads?category=${toSlug(category.title)}`} className="block font-semibold">
                         {category.title}
                       </Link>
                       <div className="flex flex-wrap gap-2 text-white/80">
                         {category.items.map((item) => (
                           <Link
                             key={item}
-                            href={`/categories/${toSlug(item)}`}
+                            href={`/ads?category=${toSlug(item)}`}
                             className="rounded-full border border-white/25 px-3 py-1 text-xs transition hover:bg-white/15"
                           >
                             {item}
