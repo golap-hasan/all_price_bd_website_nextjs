@@ -77,13 +77,7 @@ const NavMiddle = () => {
             <User className="h-4 w-4" />
             <span>Dashboard</span>
           </Link>
-          <Button
-            size="sm"
-            className="flex items-center gap-2 rounded-full bg-linear-to-r from-pink-400 to-orange-500 px-5 py-4.5 text-sm font-semibold text-white hover:from-pink-300 hover:to-orange-400"
-          >
-            <PlusCircle className="h-4 w-4" />
-            Post Add Free
-          </Button>
+          <Link href="/ads/create"><Button size="sm" className="flex items-center gap-2 rounded-full bg-linear-to-r from-pink-400 to-orange-500 px-5 py-4.5 text-sm font-semibold text-white hover:from-pink-300 hover:to-orange-400"><PlusCircle className="h-4 w-4" />Post an Ad for Free</Button></Link>
         </div>
 
         {/* Mobile Menu Button */}

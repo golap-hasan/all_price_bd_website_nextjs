@@ -165,7 +165,7 @@ export default function AllAdsExplorer({
               <Card className="border-border/40 bg-background/90">
                 <CardContent className="flex flex-col items-center justify-between gap-4 py-6 text-sm text-muted-foreground sm:flex-row">
                   <span>Didn’t find what you’re looking for?</span>
-                  <Button className="rounded-full bg-primary text-primary-foreground">Post an ad for free</Button>
+                  <Link href="/ads/create"><Button className="rounded-full bg-primary text-primary-foreground">Post an ad for free</Button></Link>
                 </CardContent>
               </Card>
             </TabsContent>

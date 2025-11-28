@@ -108,7 +108,7 @@ export default function ProfileSidebar({ variant = "desktop", className, onNavig
       </div>
 
       <Button variant="default" className="w-full rounded-full">
-        <Link href="/post-ad">Post an ad</Link>
+        <Link href="/ads/create">Post an ad</Link>
       </Button>
 
       <Separator className="bg-border/70" />
