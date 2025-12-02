@@ -127,7 +127,7 @@ export default function TopAds() {
           {spotlightAds.map((ad) => (
             <Link
               key={ad.id}
-              href={ad.href}
+              href={"/ads/apple-iphone-14"}
               className="group rounded-md border bg-card shadow-sm overflow-hidden"
             >
               <div className="aspect-square relative">

@@ -123,7 +123,7 @@ export default function AllAdsExplorer({
               <div className="grid gap-4 grid-cols-1">
                 {listings.map((listing) => (
                   <article key={listing.id} className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/90 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                    <Link href={`/ads/${listing.id}`} className="flex h-full">
+                    <Link href={`/ads/apple-iphone-14`} className="flex h-full">
                       <div className="relative w-32 h-32 shrink-0 overflow-hidden rounded-l-2xl">
                         <Image
                           src={listing.imageUrl}

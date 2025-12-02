@@ -25,7 +25,7 @@ const ListingCard = ({
 }: ListingCardProps) => {
   return (
     <Link
-      href={`/ads/${id}`}
+      href={`/ads/apple-iphone-14`}
       className="group rounded-md border bg-card shadow-sm overflow-hidden"
     >
       <div className="aspect-square relative">
