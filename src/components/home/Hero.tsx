@@ -10,39 +10,32 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 const heroSlides = [
   {
     id: 1,
     href: "/ads/featured",
-    imageSrc: "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Find Your Dream Ride",
-    description: "Explore thousands of verified vehicles at unbeatable prices.",
-    cta: "Browse Cars",
-    badge: "Featured",
-    badgeColor: "bg-amber-500",
+    imageSrc: "/images/hero1.png",
   },
   {
     id: 2,
     href: "/ads/electronics",
-    imageSrc: "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Latest Mobile Gadgets",
-    description: "Explore the newest smartphones and accessories from top brands.",
-    cta: "Shop Mobile Gadgets",
-    badge: "New Arrivals",
-    badgeColor: "bg-blue-500",
+    imageSrc: "/images/hero2.png",
   },
   {
     id: 3,
     href: "/ads/property",
-    imageSrc: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Prime Properties",
-    description: "Discover the best homes and commercial spaces near you.",
-    cta: "View Properties",
-    badge: "Hot Deals",
-    badgeColor: "bg-rose-500",
+    imageSrc: "/images/hero3.png",
+  },
+  {
+    id: 4,
+    href: "/ads/electronics",
+    imageSrc: "/images/hero4.png",
+  },
+  {
+    id: 5,
+    href: "/ads/property",
+    imageSrc: "/images/hero5.png",
   },
 ] as const;
 
@@ -95,22 +88,11 @@ const Hero = () => {
                   <Link href={slide.href} className="block h-[600px] w-full relative">
                     <Image
                       src={slide.imageSrc}
-                      alt={slide.title}
+                      alt={slide.href}
                       fill
                       className="object-cover"
                       priority={slide.id === 1}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full md:w-2/3 space-y-4">
-                      <Badge className={`${slide.badgeColor} text-white border-none px-3 py-1 text-sm`}>{slide.badge}</Badge>
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-                        {slide.title}
-                      </h2>
-                      <p className="text-lg text-gray-200 line-clamp-2">{slide.description}</p>
-                      <Button size="lg" className="rounded-full gap-2 mt-4 bg-white text-black hover:bg-gray-100 border-none">
-                        {slide.cta} <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </div>
                   </Link>
                 </CarouselItem>
               ))}
