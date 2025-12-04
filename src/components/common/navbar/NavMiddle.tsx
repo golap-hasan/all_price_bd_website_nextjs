@@ -120,7 +120,15 @@ const NavMiddle = () => {
             <User className="h-4 w-4" />
             <span>Dashboard</span>
           </Link>
-          <Link href="/ads/create"><Button size="sm" className="flex items-center gap-2 rounded-full bg-linear-to-r from-pink-400 to-orange-500 px-5 py-4.5 text-sm font-semibold text-white hover:from-pink-300 hover:to-orange-400"><PlusCircle className="h-4 w-4" />Post an Ad for Free</Button></Link>
+          <Link href="/ads/create">
+            <Button
+              size="sm"
+              className="flex items-center gap-2 rounded-full bg-linear-to-r from-pink-400 to-orange-500 px-5 py-4.5 text-sm font-semibold text-white hover:from-pink-300 hover:to-orange-400"
+            >
+              <PlusCircle className="h-4 w-4" />
+              Post an Ad for Free
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile & Tablet View */}
@@ -147,7 +155,10 @@ const NavMiddle = () => {
                 <nav className="space-y-4 text-sm">
                   {categories.map((category) => (
                     <div key={category.title} className="space-y-2">
-                      <Link href={`/ads?category=${toSlug(category.title)}`} className="block font-semibold">
+                      <Link
+                        href={`/ads?category=${toSlug(category.title)}`}
+                        className="block font-semibold"
+                      >
                         {category.title}
                       </Link>
                       <div className="flex flex-wrap gap-2 text-white/80">
@@ -165,6 +176,33 @@ const NavMiddle = () => {
                   ))}
                 </nav>
               </ScrollArea>
+            </SheetContent>
+          </Sheet>
+
+          {/* Search Button (Mobile only) */}
+          <Sheet>
+            <SheetTitle className="sr-only">Search</SheetTitle>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden border-white/30 bg-white/10 text-white hover:bg-white/20 rounded-full"
+              >
+                <Search className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              showClose={false}
+              side="top"
+              className="border-white/20 bg-primary/95 text-white p-4"
+            >
+              <div className="relative w-full">
+                <Input
+                  type="search"
+                  placeholder="Search marketplace..."
+                  className="rounded-full border-white/30 bg-white/10 pr-12 text-sm font-medium text-white placeholder:text-white/70"
+                />
+              </div>
             </SheetContent>
           </Sheet>
 
@@ -187,8 +225,8 @@ const NavMiddle = () => {
 
           {/* Favorites Button */}
           <Link href="/profile/favourites">
-            <Button 
-              size="icon" 
+            <Button
+              size="icon"
               className="flex items-center gap-2 rounded-full bg-white/20 px-3 py-2 text-sm font-semibold text-white shadow transition hover:bg-white/30"
             >
               <Heart className="h-4 w-4" />

@@ -12,12 +12,21 @@ import {
   Bell,
   UserCircle,
   CreditCard,
+  Menu,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import React from "react";
 
 const userSnapshot = {
   name: "Rafi Khan",
@@ -62,13 +71,13 @@ const navSections: NavSection[] = [
   },
 ];
 
-type ProfileSidebarProps = {
-  variant?: "desktop" | "mobile";
+type SidebarContentProps = {
   className?: string;
   onNavigate?: () => void;
+  LinkWrapper?: React.ComponentType<{ children: React.ReactNode; asChild?: boolean }>;
 };
 
-export default function ProfileSidebar({ variant = "desktop", className, onNavigate }: ProfileSidebarProps) {
+function SidebarContent({ className, onNavigate, LinkWrapper }: SidebarContentProps) {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -79,15 +88,8 @@ export default function ProfileSidebar({ variant = "desktop", className, onNavig
     return pathname.startsWith(href);
   };
 
-  const containerClass = cn(
-    "flex flex-col gap-4 bg-card/95",
-    variant === "desktop"
-      ? "hidden rounded-xl border p-5 shadow-sm lg:flex"
-      : "flex rounded-none border-0 p-5 lg:hidden"
-  );
-
   return (
-    <aside className={cn(containerClass, className)}>
+    <div className={cn("flex flex-col gap-4", className)}>
       <div className="flex items-center gap-3">
         <Avatar className="h-14 w-14">
           <AvatarImage src={userSnapshot.avatar} alt={userSnapshot.name} />
@@ -123,9 +125,8 @@ export default function ProfileSidebar({ variant = "desktop", className, onNavig
               {section.items.map(({ label, icon: Icon, href, badge }) => {
                 const active = isActive(href);
 
-                return (
+                const LinkComponent = (
                   <Link
-                    key={label}
                     href={href}
                     className={cn(
                       "group flex items-center justify-between gap-3 rounded-xl border px-3 py-2 transition",
@@ -161,6 +162,16 @@ export default function ProfileSidebar({ variant = "desktop", className, onNavig
                     ) : null}
                   </Link>
                 );
+
+                if (LinkWrapper) {
+                  return (
+                    <LinkWrapper key={label} asChild>
+                      {LinkComponent}
+                    </LinkWrapper>
+                  );
+                }
+
+                return <React.Fragment key={label}>{LinkComponent}</React.Fragment>;
               })}
             </div>
           </div>
@@ -173,6 +184,53 @@ export default function ProfileSidebar({ variant = "desktop", className, onNavig
           Featured upgrades help your listings appear ahead of others. Try promoting your best-selling items.
         </p>
       </div>
+    </div>
+  );
+}
+
+type ProfileSidebarProps = {
+  variant?: "desktop" | "mobile";
+  className?: string;
+  onNavigate?: () => void;
+};
+
+export default function ProfileSidebar({ variant = "desktop", className, onNavigate }: ProfileSidebarProps) {
+  if (variant === "mobile") {
+    return (
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" className={cn("w-full justify-between h-auto", className)}>
+            <div className="flex items-center gap-3 text-left">
+              <Avatar className="h-10 w-10 border border-border">
+                <AvatarImage src={userSnapshot.avatar} alt={userSnapshot.name} />
+                <AvatarFallback>
+                  <UserCircle className="h-5 w-5" />
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-semibold leading-none">{userSnapshot.name}</p>
+                <p className="text-xs text-muted-foreground mt-1">Manage Account</p>
+              </div>
+            </div>
+            <Menu className="h-5 w-5 text-muted-foreground" />
+          </Button>
+        </SheetTrigger>
+        <SheetTitle className="sr-only">Manage Account</SheetTitle>
+        <SheetContent side="left" className="w-[320px] p-5 overflow-y-auto">
+          <SidebarContent onNavigate={onNavigate} LinkWrapper={SheetClose} />
+        </SheetContent>
+      </Sheet>
+    );
+  }
+
+  return (
+    <aside
+      className={cn(
+        "hidden rounded-xl border bg-card/95 p-5 shadow-sm lg:flex flex-col gap-4",
+        className
+      )}
+    >
+      <SidebarContent onNavigate={onNavigate} />
     </aside>
   );
 }
