@@ -133,7 +133,7 @@ export default function LotteryPage() {
         </div>
       </section>
 
-      <div className="container mx-auto -mt-10 px-4">
+      <div className="container mx-auto -mt-10 px-4 relative z-20">
         <div className="grid gap-6 md:grid-cols-3">
           <Card className="border-none shadow-lg">
             <CardContent className="flex flex-col items-center p-6 text-center">
