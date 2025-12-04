@@ -68,73 +68,84 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden border-t border-border/20 text-sm text-muted-foreground bg-primary/20">
-      <div className="relative">
-        <div className="flex flex-col gap-8 px-6 py-8">
-
-          <div className="container mx-auto grid gap-12 text-sm text-muted-foreground lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
-            <div className="space-y-5 text-foreground">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Globe className="h-5 w-5" />
-                </div>
-                <p className="text-lg font-semibold">Recycle Mart</p>
+    <footer className="relative overflow-hidden border-border/40 bg-background py-8 text-sm text-muted-foreground">
+      <div className="container mx-auto px-6">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <Globe className="h-6 w-6" />
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Bangladesh&rsquo;s trusted marketplace for buying and selling everything—from electronics and vehicles to property and services.
-              </p>
-              <div className="space-y-3 text-sm text-muted-foreground">
-                {contactDetails.map(({ icon: Icon, label, description }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <Icon className="mt-1 h-4 w-4 text-primary" />
-                    <div>
-                      <p className="font-medium text-foreground">{label}</p>
-                      <p className="text-xs text-muted-foreground/80">{description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <p className="text-xl font-bold text-foreground tracking-tight">Recycle Mart</p>
             </div>
-
-            {infoColumns.map(({ title, links }) => (
-              <div key={title} className="space-y-4">
-                <p className="text-sm font-semibold uppercase tracking-wide text-foreground">
-                  {title}
-                </p>
-                <ul className="space-y-2 text-sm">
-                  {links.map(({ label, href }) => (
-                    <li key={label}>
-                      <Link
-                        href={href}
-                        className="inline-flex items-center gap-2 transition hover:text-foreground"
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <p className="text-base leading-relaxed text-muted-foreground/90 max-w-xs">
+              Bangladesh&rsquo;s trusted marketplace for buying and selling everything—from electronics and vehicles to property and services.
+            </p>
           </div>
 
-          <Separator className="bg-border/30" />
+          {infoColumns.slice(0, 2).map(({ title, links }) => (
+            <div key={title} className="space-y-6">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">
+                {title}
+              </h3>
+              <ul className="space-y-3">
+                {links.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      className="inline-flex items-center gap-2 text-muted-foreground/80 transition-colors hover:text-primary hover:translate-x-1 duration-200"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          <div className="container mx-auto flex flex-col items-center justify-between gap-4 text-xs sm:flex-row">
-            <p className="text-center sm:text-left">
-              © {new Date().getFullYear()} Recycle Mart. All rights reserved.
-            </p>
-            <div className="flex items-center gap-3">
-              {socials.map(({ label, href, icon: Icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border/50 text-muted-foreground transition hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
-                >
-                  <Icon className="h-4 w-4" />
-                </Link>
+          <div className="space-y-6">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">
+              Contact Us
+            </h3>
+            <div className="space-y-4">
+              {contactDetails.map(({ icon: Icon, label, description }) => (
+                <div key={label} className="flex items-start gap-3 group">
+                  <div className="mt-1 rounded-full bg-primary/5 p-1.5 text-primary transition-colors group-hover:bg-primary/10">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground transition-colors group-hover:text-primary">{label}</p>
+                    <p className="text-xs text-muted-foreground">{description}</p>
+                  </div>
+                </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        <Separator className="my-10 bg-border/40" />
+
+        <div className="flex flex-col items-center justify-between gap-6 text-xs sm:flex-row">
+          <div className="flex flex-col gap-2 text-center sm:text-left">
+            <p className="font-medium text-muted-foreground">
+              © {new Date().getFullYear()} Recycle Mart. All rights reserved.
+            </p>
+            <p className="text-muted-foreground/60">
+              Developed by <span className="font-semibold text-primary">SmartEdge Technologies</span>
+            </p>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                className="group flex h-9 w-9 items-center justify-center rounded-full border border-border/50 bg-background text-muted-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-md hover:-translate-y-0.5"
+              >
+                <Icon className="h-4 w-4" />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
