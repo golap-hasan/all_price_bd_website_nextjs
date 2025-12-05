@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import { X, SlidersHorizontal } from "lucide-react";
+import { ScrollArea } from "../ui/scroll-area";
 
 export type FilterOption = {
   label: string;
@@ -43,11 +44,11 @@ const defaultFilters: FilterGroup[] = [
     type: "checkbox",
     options: [
       { label: "Mobiles", value: "mobiles" },
+      { label: "Electronics and Gadgets", value: "electronics-and-gadgets" },
       { label: "Vehicles", value: "vehicles" },
+      { label: "Home Living", value: "home-living" },
       { label: "Property", value: "property" },
-      { label: "Electronics", value: "electronics" },
-      { label: "Jobs", value: "jobs" },
-      { label: "Services", value: "services" },
+      { label: "Others", value: "others" },
     ],
   },
   {
@@ -98,7 +99,7 @@ const FiltersContent = ({
   clearFilters
 }: FiltersContentProps) => (
   <>
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between space-y-6">
       <div>
         <p className="text-sm font-semibold text-foreground">Refine Results</p>
         <p className="text-xs text-muted-foreground">{appliedCount} filter{appliedCount === 1 ? "" : "s"} applied</p>
@@ -253,7 +254,7 @@ const Filters = ({ groups = defaultFilters, showAsSheet = false }: FiltersProps)
               Select up to 5 filters to refine your search.
             </SheetDescription>
           </SheetHeader>
-          <div className="space-y-6 px-6">
+          <ScrollArea className="h-[550px] px-6">
             <FiltersContent
               appliedCount={appliedCount}
               selected={selected}
@@ -263,14 +264,14 @@ const Filters = ({ groups = defaultFilters, showAsSheet = false }: FiltersProps)
               updateSlider={updateSlider}
               clearFilters={clearFilters}
             />
-          </div>
+          </ScrollArea>
         </SheetContent>
       </Sheet>
     );
   }
 
   return (
-    <aside className="space-y-6 rounded-3xl border border-border/40 bg-background/80 p-6 shadow-sm">
+    <aside className="rounded-3xl border border-border/40 bg-background/80 p-6 shadow-sm">
       <FiltersContent
         appliedCount={appliedCount}
         selected={selected}

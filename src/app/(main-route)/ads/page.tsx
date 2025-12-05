@@ -19,7 +19,7 @@ const breadcrumbs = [
 const AllAdsPage = () => {
   return (
     <PageLayout paddingSize="small">
-      <div className="max-w-7xl mx-auto">
+      <div className="custom-width mx-auto">
         <CustomBreadcrumb links={breadcrumbs} />
         <AllAdsExplorer
           listings={sampleListings}
